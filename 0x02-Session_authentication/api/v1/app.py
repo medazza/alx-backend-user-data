@@ -26,11 +26,11 @@ if AUTH_TYPE == 'auth':
     auth = Auth()
 if AUTH_TYPE == 'basic_auth':
     auth = BasicAuth()
-if auth_type == 'session_auth':
+if AUTH_TYPE == 'session_auth':
     auth = SessionAuth()
-if auth_type == 'session_exp_auth':
+if AUTH_TYPE == 'session_exp_auth':
     auth = SessionExpAuth()
-if auth_type == 'session_db_auth':
+if AUTH_TYPE == 'session_db_auth':
     auth = SessionDBAuth()
 
 
