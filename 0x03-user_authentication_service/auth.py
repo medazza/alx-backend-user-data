@@ -88,7 +88,7 @@ class Auth:
         self._db.update_user(user_id, session_id=None)
 
     def get_reset_password_token(self, email: str) -> str:
-        """Generates a password reset token for a user.
+        """method that generates a password reset token for a user.
         """
         user = None
         try:
@@ -102,7 +102,7 @@ class Auth:
         return reset_token
 
     def update_password(self, reset_token: str, password: str) -> None:
-        """Updates a user's password given the user's reset token.
+        """method updates a user's password given the user's reset token.
         """
         user = None
         try:
@@ -111,9 +111,9 @@ class Auth:
             user = None
         if user is None:
             raise ValueError()
-        new_password_hash = _hash_password(password)
+        new_pwd_hash = _hash_password(password)
         self._db.update_user(
             user.id,
-            hashed_password=new_password_hash,
+            hashed_password=new_pwd_hash,
             reset_token=None,
         )
