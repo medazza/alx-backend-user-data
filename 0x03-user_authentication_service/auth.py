@@ -55,7 +55,7 @@ class Auth:
         return False
 
     def create_session(self, email: str) -> str:
-        """Creates a new session for a user.
+        """method that creates a new session for a user.
         """
         user = None
         try:
@@ -69,7 +69,7 @@ class Auth:
         return session_id
 
     def get_user_from_session_id(self, session_id: str) -> Union[User, None]:
-        """Retrieves a user based on a given session ID.
+        """method that retrieves a user based on a given session ID.
         """
         user = None
         if session_id is None:
@@ -81,7 +81,7 @@ class Auth:
         return user
 
     def destroy_session(self, user_id: int) -> None:
-        """Destroys a session associated with a given user.
+        """method that destroys a session associated with a given user.
         """
         if user_id is None:
             return None

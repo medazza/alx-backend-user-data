@@ -32,23 +32,20 @@ def users() -> str:
 
 @app.route("/sessions", methods=["POST"], strict_slashes=False)
 def login() -> str:
-    """POST /sessions
-    Return:
+    """Return:
         - The account login payload.
     """
     email, password = request.form.get("email"), request.form.get("password")
     if not AUTH.valid_login(email, password):
         abort(401)
-    session_id = AUTH.create_session(email)
-    response = jsonify({"email": email, "message": "logged in"})
-    response.set_cookie("session_id", session_id)
-    return response
+    res = jsonify({"email": email, "message": "logged in"})
+    res.set_cookie("session_id", AUTH.create_session(email))
+    return res
 
 
 @app.route("/sessions", methods=["DELETE"], strict_slashes=False)
 def logout() -> str:
-    """DELETE /sessions
-    Return:
+    """Return:
         - Redirects to home route.
     """
     session_id = request.cookies.get("session_id")
